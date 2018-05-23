@@ -2,6 +2,8 @@ var http = require('./http/http.js')
 var addr = require('./constant.js')
 var token = require('./token/token.js')
 
+exports.Qsnack = Qsnack
+
 function Qsnack(tokens){
     this.Tokens = tokens || new token.Tokens()
 }
@@ -196,6 +198,3 @@ Qsnack.prototype.createAccount = function (callback) {
      http.get(url,token,callback)
   })
 }
-
-
-exports.Qsnack = Qsnack

@@ -1,0 +1,26 @@
+{
+  "name": "qsnart",
+  "version": "0.0.1",
+  "description": "qsnart nodejs sdk ",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperchaincn/qsnark-nodejs-sdk.git"
+  },
+  "author": "yixiangguo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyperchaincn/qsnark-nodejs-sdk/issues"
+  },
+  "homepage": "https://github.com/hyperchaincn/qsnark-nodejs-sdk#readme",
+  "dependencies": {
+    "request": "^2.87.0"
+  }
+}
