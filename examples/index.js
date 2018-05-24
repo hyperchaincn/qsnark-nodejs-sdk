@@ -1,8 +1,13 @@
-var qsnack = require('../qsnart/api.js')
+var qsnart = require('../index.js')
 
-var qsnack = new qsnack.Qsnack()
+qsnart.conf.ACCESS_KEY = 'c4bc5803-8f2c-43e6-9961-9ff3cbd1f733';
+qsnart.conf.SECRET_KEY = '9f5qzgZval3O7YKqp44m4jM74m03IN9S';
+qsnart.conf.PHONE = '18702604793';
+qsnart.conf.PASSWORD = 'me123456';
 
-qsnack.queryBlock("number","latest ",function(error,response,body){
+var api = new qsnart.core.Qsnack()
+
+api.queryBlock("number","latest ",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -10,7 +15,7 @@ qsnack.queryBlock("number","latest ",function(error,response,body){
      }
 })
 
-qsnack.queryBlockPage("1","3",function(error,response,body){
+api.queryBlockPage("1","3",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -18,7 +23,7 @@ qsnack.queryBlockPage("1","3",function(error,response,body){
      }
 })
 
-qsnack.queryBlockRange("2","4",function(error,response,body){
+api.queryBlockRange("2","4",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -26,7 +31,7 @@ qsnack.queryBlockRange("2","4",function(error,response,body){
      }
 })
 
-qsnack.compileContract("contract test{}",function(error,response,body){
+api.compileContract("contract test{}",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -34,7 +39,7 @@ qsnack.compileContract("contract test{}",function(error,response,body){
      }
 })
 
-qsnack.deployContract("0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820b4c36b8b61723f302432d246407a061599017f8607ed26f1c053b5ecc63a54200029","0x3713c3d01ae09cf32787c9c66c9c0781cf4b613d",function(error,response,body){
+api.deployContract("0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820b4c36b8b61723f302432d246407a061599017f8607ed26f1c053b5ecc63a54200029","0x3713c3d01ae09cf32787c9c66c9c0781cf4b613d",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -43,7 +48,7 @@ qsnack.deployContract("0x60606040523415600e57600080fd5b5b603680601c6000396000f30
 })
 
 
-qsnack.deployContractSync("0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820b4c36b8b61723f302432d246407a061599017f8607ed26f1c053b5ecc63a54200029","0x3713c3d01ae09cf32787c9c66c9c0781cf4b613d",function(error,response,body){
+api.deployContractSync("0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820b4c36b8b61723f302432d246407a061599017f8607ed26f1c053b5ecc63a54200029","0x3713c3d01ae09cf32787c9c66c9c0781cf4b613d",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -54,7 +59,7 @@ qsnack.deployContractSync("0x60606040523415600e57600080fd5b5b603680601c600039600
 var abi = "[{\"constant\":false,\"inputs\":[{\"name\":\"num1\",\"type\":\"uint32\"},{\"name\":\"num2\",\"type\":\"uint32\"}],\"name\":\"add\",\"outputs\":[],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getSum\",\"outputs\":[{\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"increment\",\"outputs\":[],\"payable\":false,\"type\":\"function\"}]"
 var args = ["1","2"]
 var func = "add"
-qsnack.getPayload(abi,args,func,function(error,response,body){
+api.getPayload(abi,args,func,function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -69,7 +74,7 @@ var data =   {
         "Payload": "34141",
         "To": "0x8255340c2c4a1aec4010d2b6fdbb98727c65523d"
   }
-qsnack.invokeContract(data,function(error,response,body){
+api.invokeContract(data,function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -83,7 +88,7 @@ var data =   {
         "Payload": "34141",
         "To": "0x8255340c2c4a1aec4010d2b6fdbb98727c65523d"
   }
-qsnack.invokeContractSync(data,function(error,response,body){
+api.invokeContractSync(data,function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -97,7 +102,7 @@ var data =   {
         "Payload": "0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a72305820b4c36b8b61723f302432d246407a061599017f8607ed26f1c053b5ecc63a54200029",
         "To": "0xd3a7bdd391f6aa13b28a72690e19d2ab3d845ac8"
         }
-qsnack.maintainContract(data,function(error,response,body){
+api.maintainContract(data,function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -106,7 +111,7 @@ qsnack.maintainContract(data,function(error,response,body){
 })
 
 
-qsnack.contractStatus("0xd3a7bdd391f6aa13b28a72690e19d2ab3d845ac8",function(error,response,body){
+api.contractStatus("0xd3a7bdd391f6aa13b28a72690e19d2ab3d845ac8",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -115,7 +120,7 @@ qsnack.contractStatus("0xd3a7bdd391f6aa13b28a72690e19d2ab3d845ac8",function(erro
 })
 
 
-qsnack.transactionCount(function(error,response,body){
+api.transactionCount(function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -123,7 +128,7 @@ qsnack.transactionCount(function(error,response,body){
      }
 })
 
-qsnack.queryTransaction("0xed70377c261bfdc7dd7f4fc15c8961c145f9457186d6ff95f60907e9fb63d827",function(error,response,body){
+api.queryTransaction("0xed70377c261bfdc7dd7f4fc15c8961c145f9457186d6ff95f60907e9fb63d827",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -132,7 +137,7 @@ qsnack.queryTransaction("0xed70377c261bfdc7dd7f4fc15c8961c145f9457186d6ff95f6090
 })
 
 
-qsnack.transactionTxreceipt("0xed70377c261bfdc7dd7f4fc15c8961c145f9457186d6ff95f60907e9fb63d827",function(error,response,body){
+api.transactionTxreceipt("0xed70377c261bfdc7dd7f4fc15c8961c145f9457186d6ff95f60907e9fb63d827",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -140,7 +145,7 @@ qsnack.transactionTxreceipt("0xed70377c261bfdc7dd7f4fc15c8961c145f9457186d6ff95f
      }
 })
 
-qsnack.discardTransaction("1515140350903604865","1515140350903604867",function(error,response,body){
+api.discardTransaction("1515140350903604865","1515140350903604867",function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{
@@ -148,7 +153,7 @@ qsnack.discardTransaction("1515140350903604865","1515140350903604867",function(e
      }
 })
 
-qsnack.createAccount(function(error,response,body){
+api.createAccount(function(error,response,body){
      if(!error && response.statusCode == 200){
         console.log(JSON.parse(body))
      }else{

@@ -8,7 +8,6 @@ npm install qsnart
 
 # 使用  
 ```
-
 var qsnart = require('qsnart')
 
 qsnart.conf.ACCESS_KEY = ' ';
