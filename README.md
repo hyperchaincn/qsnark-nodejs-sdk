@@ -1,6 +1,5 @@
-# 趣链开发者平台 Nodejs SDK
-Qsnart Nodejs SDK  
-提供开发者平台接口封装，Nodejs版  
+# 趣链开发者平台 Node.js SDK
+帮助Node.js开发者便利的使用趣链开发者平台API
 
 # 安装
 ```
