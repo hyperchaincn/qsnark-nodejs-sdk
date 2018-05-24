@@ -16,7 +16,9 @@ Qsnack.prototype.getAccessToken = function (callback) {
        if(!error && response.statusCode == 200){
           c.Tokens.setToken(JSON.parse(body))
           console.log("获得AccessToken:",c.Tokens.getAccessToken())
-          callback()
+          if(callback){
+            callback()
+          }
        }else{
           console.error(error,response.statusCode);
        }
